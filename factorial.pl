@@ -1,7 +1,10 @@
 /* prolog tutorial  2.2 Two Factorial Definitions */
 
+% Fact / 'Unit clause (no body)'
+% Reads: The factorial of 0 is 1.
 factorial(0,1).
 
+% Rule
 factorial(N,F) :-
    N>0,
    N1 is N-1,
