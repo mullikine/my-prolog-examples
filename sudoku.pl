@@ -1,7 +1,11 @@
 :- use_module(library(clpfd)).
 
 sudoku(Rows) :-
-        length(Rows, 9), maplist(same_length(Rows), Rows),
+        % number of rows == 9
+        length(Rows, 9),
+        % Rows is square (number of columns == 9)
+        maplist(same_length(Rows), Rows),
+        % Make rows 1D and store in Vs. Assert that all values lie within the range 1..9.
         append(Rows, Vs), Vs ins 1..9,
         maplist(all_distinct, Rows),
         transpose(Rows, Columns),
