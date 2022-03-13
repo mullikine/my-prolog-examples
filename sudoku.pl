@@ -22,8 +22,13 @@ sudoku(Rows) :-
         blocks(Gs, Hs, Is).
 
 blocks([], [], []).
+% Take the first 3 of each row, and that's forms the block,
+% which we then assert all_distinct on.
 blocks([N1,N2,N3|Ns1], [N4,N5,N6|Ns2], [N7,N8,N9|Ns3]) :-
         all_distinct([N1,N2,N3,N4,N5,N6,N7,N8,N9]),
+        % We then run it again on the remaining 6 of each row
+        % and on the next recur it runs again on the remaining 3 of each row.
+        % On the 3rd iteration, N1,N2,N3 will be empty, so the fact blocks([], [], []). matches.
         blocks(Ns1, Ns2, Ns3).
 
 problem(1, [[_,_,_,_,_,_,_,_,_],
