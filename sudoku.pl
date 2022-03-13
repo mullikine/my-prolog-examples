@@ -15,6 +15,8 @@ sudoku(Rows) :-
         % Assert every column contains no duplicate values.
         maplist(all_distinct, Columns),
         Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],
+        % As is the first row of 9,
+        % Bs is the second row of 9, etc.
         blocks(As, Bs, Cs),
         blocks(Ds, Es, Fs),
         blocks(Gs, Hs, Is).
