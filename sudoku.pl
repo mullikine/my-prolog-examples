@@ -7,6 +7,7 @@ sudoku(Rows) :-
         maplist(same_length(Rows), Rows),
         % Make rows 1D and store in Vs. Assert that all values lie within the range 1..9.
         append(Rows, Vs), Vs ins 1..9,
+        % Assert every row contains no duplicate values.
         maplist(all_distinct, Rows),
         transpose(Rows, Columns),
         maplist(all_distinct, Columns),
