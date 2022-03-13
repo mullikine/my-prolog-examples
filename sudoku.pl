@@ -12,6 +12,7 @@ sudoku(Rows) :-
         % This gets a Columns representation from the Rows.
         % It could go the other way if desired too.
         transpose(Rows, Columns),
+        % Assert every column contains no duplicate values.
         maplist(all_distinct, Columns),
         Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],
         blocks(As, Bs, Cs),
